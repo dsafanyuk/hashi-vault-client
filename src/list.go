@@ -37,7 +37,11 @@ func (c *ListCommand) Run(args []string) int {
 		c.Ui.Output("The list command expects at most one argument")
 		return 1
 	case x == 0:
-		path = ""
+		fmt.Println(cfg.BaseSecretPath == "")
+		if cfg.BaseSecretPath == "" {
+			path = ""
+		}
+		path = cfg.BaseSecretPath
 	default:
 		path = strings.Trim(fmt.Sprint(args[:1]), "[]")
 	}

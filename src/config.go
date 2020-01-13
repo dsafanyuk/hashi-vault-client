@@ -25,8 +25,9 @@ type Config struct {
 	// Github org
 	GithubOrg string `yaml:"github_org"`
 	// Github Personal Access Token
-	GithubPAT string `yaml:"github_pat"`
-	Path      string
+	GithubPAT      string `yaml:"github_pat"`
+	BaseSecretPath string `yaml:"base_secret_path"`
+	Path           string
 }
 
 func LoadConfig() (Config, error) {
