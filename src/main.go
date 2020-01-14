@@ -71,7 +71,7 @@ func LoadCli() *cli.CLI {
 		ErrorWriter: os.Stderr,
 	}
 
-	c := cli.NewCLI("vc", "1.1.4")
+	c := cli.NewCLI("vc", "0.0.1")
 	c.Args = os.Args[1:]
 
 	c.Commands = map[string]cli.CommandFactory{
@@ -84,6 +84,12 @@ func LoadCli() *cli.CLI {
 			return &DeleteCommand{
 				Ui: ui,
 			}, nil
+		},
+		"interactive": func() (cli.Command, error) {
+			return &InteractiveCommand{
+				Ui: ui,
+			}, nil
+
 		},
 		"insert": func() (cli.Command, error) {
 			return &InsertCommand{
