@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/mitchellh/cli"
@@ -29,13 +30,13 @@ func (c *InsertCommand) Run(args []string) int {
 		}
 		data[kvpair[0]] = kvpair[1]
 	}
-	fmt.Println(data)
+	data["creator"] = os.Getenv("USER")
 	_, err := vc.Logical().Write(path, data)
 	if err != nil {
 		c.Ui.Error(CheckError(err, fmt.Sprintf("Unable to write secret: %q", err)))
 		return 1
 	}
-
+	c.Ui.Info("Success!")
 	return 0
 }
 

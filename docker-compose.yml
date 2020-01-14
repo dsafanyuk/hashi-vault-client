@@ -1,0 +1,6 @@
+vault:
+  image: vault:1.0.2
+  ports:
+    - "8200:8200"
+  environment:
+    - VAULT_DEV_ROOT_TOKEN_ID=password

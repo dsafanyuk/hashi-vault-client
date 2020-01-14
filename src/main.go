@@ -91,16 +91,16 @@ func LoadCli() *cli.CLI {
 			}, nil
 
 		},
-		// "mv": func() (cli.Command, error) {
-		// 	return &MoveCommand{
-		// 		Ui: ui,
-		// 	}, nil
-		// },
-		// "cp": func() (cli.Command, error) {
-		// 	return &CopyCommand{
-		// 		Ui: ui,
-		// 	}, nil
-		// },
+		"mv": func() (cli.Command, error) {
+			return &MoveCommand{
+				Ui: ui,
+			}, nil
+		},
+		"cp": func() (cli.Command, error) {
+			return &CopyCommand{
+				Ui: ui,
+			}, nil
+		},
 		"show": func() (cli.Command, error) {
 			return &ShowCommand{
 				Ui: ui,
