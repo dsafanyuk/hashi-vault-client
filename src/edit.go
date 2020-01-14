@@ -239,4 +239,7 @@ func WriteSecretToFile(file *os.File, kv_pairs map[string]interface{}) {
 		}
 		file.WriteString(key + ": " + kv_pairs[key].(string) + "\n")
 	}
+	if cfg.EditorAudit == true {
+		file.WriteString("edited_by: " + os.Getenv("USER") + "\n")
+	}
 }
