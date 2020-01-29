@@ -30,10 +30,7 @@ func (c *InsertCommand) Run(args []string) int {
 		}
 		data[kvpair[0]] = kvpair[1]
 	}
-
-	if cfg.CreatorAudit == true {
-		data["creator"] = os.Getenv("USER")
-	}
+	data["creator"] = os.Getenv("USER")
 	_, err := vc.Logical().Write(path, data)
 	if err != nil {
 		c.Ui.Error(CheckError(err, fmt.Sprintf("Unable to write secret: %q", err)))

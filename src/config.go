@@ -27,8 +27,6 @@ type Config struct {
 	// Github Personal Access Token
 	GithubPAT      string `yaml:"github_pat"`
 	BaseSecretPath string `yaml:"base_secret_path"`
-	CreatorAudit   bool   `yaml:"creator_audit"`
-	EditorAudit    bool   `yaml:"editor_audit"`
 	Path           string
 }
 
