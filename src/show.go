@@ -70,11 +70,19 @@ func (c *ShowCommand) Run(args []string) int {
 			}
 		}
 
-		output += fmt.Sprintf(
-			"%-"+fmt.Sprint(maxKeyLength)+"v%v\n",
-			key+":",
-			strings.TrimSpace(secret.Data[key].(string)),
-		)
+		if fmt.Sprintf("%T", secret.Data[key]) == "json.Number" {
+			output += fmt.Sprintf(
+				"%-"+fmt.Sprint(maxKeyLength)+"v%v\n",
+				key+":",
+				strings.TrimSpace(fmt.Sprintf("%v", secret.Data[key])),
+			)
+		} else {
+			output += fmt.Sprintf(
+				"%-"+fmt.Sprint(maxKeyLength)+"v%v\n",
+				key+":",
+				strings.TrimSpace(secret.Data[key].(string)),
+			)
+		}
 	}
 
 	c.Ui.Output(output)
